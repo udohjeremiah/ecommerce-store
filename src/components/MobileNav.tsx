@@ -29,7 +29,7 @@ export default function MobileNav({ categories }: MobileNavProps) {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   const routes = categories.map((category) => ({
-    href: `category/${category.id}`,
+    href: `/category/${category.id}`,
     label: category.name,
     active: pathName === `/category/${category.id}`,
   }));

@@ -15,7 +15,6 @@ import {
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { useMounted } from "@/hooks/use-mounted";
 
 type Theme = "light" | "dark" | "system";
 
