@@ -1,6 +1,10 @@
 import { Billboard } from "@/types/types";
 
 export async function getBillboard(billboardId: string): Promise<Billboard> {
+  if (!process.env.NEXT_PUBLIC_API_URL) {
+    throw new Error("API_URL is not defined");
+  }
+
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/billboards/${billboardId}`,
   );
