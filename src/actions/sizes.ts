@@ -1,13 +1,13 @@
 import { Size } from "@/types/types";
 
-export async function getSize(sizeId: string): Promise<Size> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/sizes/${sizeId}`,
-  );
+const URL = process.env.NEXT_PUBLIC_API_URL;
+
+export async function getSize(sizeId: string): Promise<Size> {
+  const response = await fetch(`${URL}/sizes/${sizeId}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -19,11 +19,7 @@ export async function getSize(sizeId: string): Promise<Size> {
 }
 
 export async function getSizes(): Promise<Size[]> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/sizes`);
+  const response = await fetch(`${URL}/sizes`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);

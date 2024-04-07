@@ -2,14 +2,14 @@ import queryString from "query-string";
 
 import { Product, Query } from "@/types/types";
 
-export async function getProduct(productId: string): Promise<Product> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`,
-  );
+const URL = process.env.NEXT_PUBLIC_API_URL;
+
+export async function getProduct(productId: string): Promise<Product> {
+  const response = await fetch(`${URL}/products/${productId}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -21,12 +21,8 @@ export async function getProduct(productId: string): Promise<Product> {
 }
 
 export async function getProducts(query: Query): Promise<Product[]> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
-
   const url = queryString.stringifyUrl({
-    url: `${process.env.NEXT_PUBLIC_API_URL}/products`,
+    url: `${URL}/products`,
     query: {
       categoryId: query.categoryId,
       sizeId: query.sizeId,

@@ -1,13 +1,13 @@
 import { Billboard } from "@/types/types";
 
-export async function getBillboard(billboardId: string): Promise<Billboard> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/billboards/${billboardId}`,
-  );
+const URL = process.env.NEXT_PUBLIC_API_URL;
+
+export async function getBillboard(billboardId: string): Promise<Billboard> {
+  const response = await fetch(`${URL}/billboards/${billboardId}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
