@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { Toaster } from "@/components/ui/sonner";
 
 import ThemeProvider from "@/providers/ThemeProvider";
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Header />
           {children}
           <Footer />
+          <Toaster closeButton richColors />
         </ThemeProvider>
       </body>
     </html>
