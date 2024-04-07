@@ -4,9 +4,9 @@ const URL = `${process.env.NEXT_PUBLIC_API_URL!}/sizes`;
 
 export async function getSize(sizeId: string): Promise<Size> {
   const response = await fetch(`${URL}/${sizeId}`);
-  const { Size } = await response.json();
+  const { size } = await response.json();
 
-  return Size;
+  return size;
 }
 
 export async function getSizes(): Promise<Size[]> {

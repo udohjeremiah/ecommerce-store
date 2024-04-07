@@ -38,7 +38,7 @@ export default function CartPage() {
                       src={cart.Image[0].imagePublicId}
                       alt=""
                       fill
-                      className="object-cover object-center"
+                      className="object-contain"
                     />
                   </div>
                   <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">

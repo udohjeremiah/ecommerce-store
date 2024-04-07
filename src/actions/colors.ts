@@ -4,9 +4,9 @@ const URL = `${process.env.NEXT_PUBLIC_API_URL!}/colors`;
 
 export async function getColor(colorId: string): Promise<Color> {
   const response = await fetch(`${URL}/${colorId}`);
-  const { Color } = await response.json();
+  const { color } = await response.json();
 
-  return Color;
+  return color;
 }
 
 export async function getColors(): Promise<Color[]> {
