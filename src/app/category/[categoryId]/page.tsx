@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title: `${category.name} Category | E-Commerce Store`,
-    description: `Explore the products in the ${category?.name} category from our e-commerce store.`,
+    description: `Explore the products in the ${category.name} category from our e-commerce store.`,
   };
 }
 
@@ -63,20 +63,23 @@ export default async function CategoryPage({
             <Filter valueKey="colorId" name="Colors" data={colors} />
           </div>
           <div className={cn("lg:col-span-4")}>
-            {products.length === 0 && <EmptyProductsPlaceholder />}
-            <ul
-              className={cn(
-                "grid grid-cols-1 gap-4",
-                "sm:grid-cols-2",
-                "md:grid-cols-3",
-              )}
-            >
-              {products.map((product, index) => (
-                <li key={index}>
-                  <Product product={product} />
-                </li>
-              ))}
-            </ul>
+            {products.length === 0 ? (
+              <EmptyProductsPlaceholder />
+            ) : (
+              <ul
+                className={cn(
+                  "grid grid-cols-1 gap-4",
+                  "sm:grid-cols-2",
+                  "md:grid-cols-3",
+                )}
+              >
+                {products.map((product, index) => (
+                  <li key={index}>
+                    <Product product={product} />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>

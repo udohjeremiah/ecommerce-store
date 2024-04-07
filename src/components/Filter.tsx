@@ -7,8 +7,6 @@ import queryString from "query-string";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import { cn } from "@/lib/utils";
-
 import { Color, Size } from "@/types/types";
 
 interface FilterProps {

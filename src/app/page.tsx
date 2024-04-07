@@ -14,6 +14,7 @@ export default async function RootPage() {
   const billboard = await getBillboard(
     process.env.NEXT_PUBLIC_HOME_BILLBOARD_ID,
   );
+
   const products = await getProducts({ isFeatured: true });
 
   return (
