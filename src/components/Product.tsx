@@ -38,7 +38,7 @@ export default function Product({ product }: ProductProps) {
           <div>
             <p className="font-semibold">{product.name}</p>
             <p className="text-sm text-muted-foreground">
-              {product.Category?.name}
+              {product.Category.name}
             </p>
           </div>
           <p className="ml-auto font-semibold">

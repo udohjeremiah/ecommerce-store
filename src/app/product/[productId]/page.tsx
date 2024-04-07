@@ -22,21 +22,21 @@ export async function generateMetadata({
   params: { productId: string };
 }): Promise<Metadata> {
   const product = await getProduct(params.productId);
-  const productName = product?.name
+  const productName = product.name
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 
   return {
     title: `${productName} | E-Commerce Store`,
-    description: `Shop the ${product?.name} product from our e-commerce store.`,
+    description: `Shop the ${product.name} product from our e-commerce store.`,
   };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const product = await getProduct(params.productId);
   const suggestedProducts = await getProducts({
-    categoryId: product?.Category?.id,
+    categoryId: product.Category.id,
   });
 
   return (

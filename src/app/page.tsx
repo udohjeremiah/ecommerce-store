@@ -7,9 +7,14 @@ import Products from "@/components/Products";
 import { cn } from "@/lib/utils";
 
 export default async function RootPage() {
+  if (!process.env.NEXT_PUBLIC_HOME_BILLBOARD_ID) {
+    throw new Error("HOME_BILLBOARD_ID is not defined");
+  }
+
   const billboard = await getBillboard(
-    process.env.NEXT_PUBLIC_HOME_BILLBOARD_ID!,
+    process.env.NEXT_PUBLIC_HOME_BILLBOARD_ID,
   );
+
   const products = await getProducts({ isFeatured: true });
 
   return (
