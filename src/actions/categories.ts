@@ -1,13 +1,13 @@
 import { Category } from "@/types/types";
 
-export async function getCategory(categoryId: string): Promise<Category> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/categories/${categoryId}`,
-  );
+const URL = process.env.NEXT_PUBLIC_API_URL;
+
+export async function getCategory(categoryId: string): Promise<Category> {
+  const response = await fetch(`${URL}/categories/${categoryId}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -19,11 +19,7 @@ export async function getCategory(categoryId: string): Promise<Category> {
 }
 
 export async function getCategories(): Promise<Category[]> {
-  if (!process.env.NEXT_PUBLIC_API_URL) {
-    throw new Error("API_URL is not defined");
-  }
-
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+  const response = await fetch(`${URL}/categories`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
