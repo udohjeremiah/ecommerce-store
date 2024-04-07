@@ -2,7 +2,6 @@
 
 import { CldImage } from "next-cloudinary";
 import { XIcon } from "lucide-react";
-import { toast } from "sonner";
 
 import EmptyCartsPlaceholder from "@/components/EmptyCartsPlaceholder";
 import Summary from "@/components/Summary";

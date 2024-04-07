@@ -2,7 +2,11 @@ import queryString from "query-string";
 
 import { Product, Query } from "@/types/types";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL!}/products`;
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
+
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
 
 export async function getProduct(productId: string): Promise<Product> {
   const response = await fetch(`${URL}/${productId}`);

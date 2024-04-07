@@ -37,10 +37,14 @@ export default function Summary() {
 
   const onCheckout = async () => {
     try {
+      if (!process.env.NEXT_PUBLIC_API_URL) {
+        throw new Error("API_URL is not defined");
+      }
+
       setCheckingOut(true);
 
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL!}/checkout`,
+        `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
         {
           method: "POST",
           headers: {

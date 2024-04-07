@@ -1,6 +1,10 @@
 import { Size } from "@/types/types";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL!}/sizes`;
+if (!process.env.NEXT_PUBLIC_API_URL) {
+  throw new Error("API_URL is not defined");
+}
+
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/sizes`;
 
 export async function getSize(sizeId: string): Promise<Size> {
   const response = await fetch(`${URL}/${sizeId}`);
